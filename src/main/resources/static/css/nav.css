@@ -1,0 +1,8 @@
+a.page-title {
+    border-radius:5px;
+
+}
+a.page-title:hover {
+    background-color: darkturquoise;
+    color: black;
+}

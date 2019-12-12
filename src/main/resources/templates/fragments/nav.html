@@ -1,0 +1,106 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" th:fragment="nav-front"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <a class="navbar-brand" href="/"><img src="/images/logopage.png" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" >
+
+        <ul class="navbar-nav mr-auto">
+            <!-- th:if="${page.slug != 'home'}" -->
+            <li class="nav-item active " th:each="page: ${cpages}" th:if="${page.slug != 'home'}">
+                <a class="nav-link page-title" th:href="@{'/' + ${page.slug}}" th:text="${page.title}"></a>
+            </li>
+            <!-- <li class="nav-item">
+                <a class="nav-link" href="#">Link</a>
+            </li> -->
+        </ul>
+
+        <ul class="float-right navbar-nav" th:if="${principal == null}">
+            <li class="nav-item active">
+                <a th:href="@{/register}" class="nav-link page-title">Register</a>
+            </li>
+            <li class="nav-item active">
+                <a th:href="@{/login}" class="nav-link page-title">Login</a>
+            </li>
+        </ul>
+
+        <!--
+        <form th:if="${principal == 'admin'}" method="post" th:action="@{/logout}">
+            <ul class="float-right navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link page-title" href="/admin/pages">Pages</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link page-title" href="/admin/categories">Category</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link page-title" href="/admin/educations">Educations</a>
+                </li>
+            </ul>
+        </form> -->
+
+        <form class="float-right" th:if="${principal != null}" method="post" th:action="@{/logout}">
+            <div th:if="${principal != 'admin'}">
+                <span class="text-white" th:text="${'Hi, ' + principal}"></span>
+                <!-- <a th:href="@{/password}" class="nav-link page-title">Change Password</a> -->
+                <button class="btn btn-secondary buttonDanger">Logout</button>
+            </div>
+            <div th:if="${principal == 'admin'}">
+                <div  id="YanMenu" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">
+
+                        &times;</a>
+                    <!-- <a class="text-black" th:text="${'Hi, ' + principal}"></a> -->
+                    <a class="nav-link page-title" href="/admin/pages">Pages</a>
+                    <a class="nav-link page-title" href="/admin/categories">Category</a>
+                    <a class="nav-link page-title" href="/admin/educations">Educations</a>
+                    <a th:href="@{/change-password}" class="nav-link page-title">Change Password</a>
+                    <a><button class="btn btn-secondary buttonDanger">Logout</button></a>
+                </div>
+
+                <div id="main">
+                    <span style="text-align: center; margin-right: 5px;" class="text-white" th:text="${'Hi, ' + principal}"></span>
+                    <span class="text-white" style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776; </span>
+                </div>
+            </div>
+        </form>
+
+        <!--<form th:if="${principal == 'admin'}" method="post" th:action="@{/logout}">
+
+        </form> -->
+
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark" th:fragment="nav-admin"
+     xmlns:th="http://www.w3.org/1999/xhtml">
+    <!-- <a class="navbar-brand" href="/" target="_blank">Home Page</a> -->
+    <a class="navbar-brand" href="/"><img src="/images/logopage.png" alt="Logo"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link page-title" href="/admin/pages">Pages</a>
+            </li>
+            <li class="nav-item active">
+                    <a class="nav-link page-title" href="/admin/categories">Category</a>
+            </li>
+            <li class="nav-item active">
+                    <a class="nav-link page-title" href="/admin/educations">Educations</a>
+            </li>
+        </ul>
+
+        <form class="float-right" th:if="${principal != null}" method="post" th:action="@{/logout}">
+            <span class="text-white" th:text="${'Hi, ' + principal}"></span>
+            <button class="btn btn-secondary buttonDanger">Logout</button>
+        </form>
+
+    </div>
+</nav>

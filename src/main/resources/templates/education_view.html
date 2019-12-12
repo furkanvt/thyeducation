@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+    <head th:replace="fragments/head"></head>
+
+    <body>
+
+        <nav th:replace="fragments/nav :: nav-front"></nav>
+
+        <div class="container-fluid mt-5">
+            <!-- Example row of columns -->
+            <div class="row">
+                <div th:replace="fragments/categories"></div>
+                <div class="col"></div>
+                <div class="col-8">
+
+                    <h2 class="display-3 mb-5" th:text="${categoryName}"></h2>
+                    <a href="javascript:history.back()" class="btn btn-primary btn mb-5 buttonBack">Go Back</a>
+                    
+                    <div th:each="education: ${educations}">
+                        <div class="row">
+                            <div class="col">
+                                <p>
+                                    <img align="left" style="width: 150px;
+                                        height: 150px; margin-right: 20px;"
+                                        th:src="@{'/media/' + ${education.image}}">
+                                    <h4 th:text="${education.name}"></h4>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="desc"
+                                th:utext="${education.description}"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> <!-- /container -->
+
+        <!-- <footer th:replace="fragments/footer"></footer> -->
+        <div th:replace="fragments/footer"></div>
+
+    </body>
+
+</html>
