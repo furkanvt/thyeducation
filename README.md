@@ -7,4 +7,4 @@ http://thyeducationdemo.herokuapp.com/
 Username : user
 Password : 12345
 
-Kullanıcı adı ile giriş yaparak görüntülenebilir.
+Kullanıcı adı ile giriş yapılarak görüntülenebilir.
