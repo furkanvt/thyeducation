@@ -8,3 +8,7 @@ Username : user
 Password : 12345
 
 Kullanıcı adı ile giriş yapılarak görüntülenebilir.
+
+Page yönetimi için 
+Username : admin
+Password : 12345
